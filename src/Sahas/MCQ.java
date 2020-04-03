@@ -134,6 +134,11 @@ public MCQ()
 	l7=new JLabel("Password");
 	l7.setForeground(Color.WHITE);
 	l7.setFont(new Font("Century Gothic", Font.BOLD, 18));
+	l8=new JLabel("Tests Are Not Available");
+	l8.setHorizontalTextPosition(SwingConstants.CENTER);
+	l8.setHorizontalAlignment(SwingConstants.CENTER);
+	l8.setForeground(Color.WHITE);
+	l8.setFont(new Font("Century Gothic", Font.BOLD, 18));
 	l9=new JLabel("Username");
 	l9.setFont(new Font("Century Gothic", Font.BOLD, 18));
 	l9.setForeground(Color.WHITE);
@@ -388,6 +393,7 @@ public MCQ()
 	b8.setContentAreaFilled(false);
 	b8.setBorder(null);
 	b8.setEnabled(false);
+	b8.setVisible(false);
 	b9=new JButton("");
 	b9.setRolloverIcon(new ImageIcon(MCQ.class.getResource("/Button/IMGClose2.png")));
 	b9.setIcon(new ImageIcon(MCQ.class.getResource("/Button/IMGClose.png")));
@@ -1779,6 +1785,7 @@ public MCQ()
 	l5.setBounds(379,384,100,25);
 	l6.setBounds(379,437,100,25);
 	l7.setBounds(379,452,100,25);
+	l8.setBounds(75,177,400,40);
 	l9.setBounds(374,179,115,25);
 	l10.setBounds(374,255,115,25);
 	l11.setBounds(374,407,115,44);
@@ -2023,7 +2030,7 @@ public MCQ()
 	x9.setBounds(1135,535,20,20);
 	x10.setBounds(1135,579,20,20);
 	
-	//l8,l31,b22,t1,t11,t12 is available
+	//l31,b22,t1,t11,t12 is available
 	
 	//Frames.vimage(f12);
 	//Frames.ntest(f11);
@@ -2491,6 +2498,7 @@ public static void readres(JFrame f7)
 	f7.getContentPane().add(l26);
 	f7.getContentPane().add(l27);
 	f7.getContentPane().add(l28);
+	f7.getContentPane().add(l8);
 	f7.getContentPane().add(lb7);
 }
 public static void ressheet(JFrame f8)
@@ -2744,27 +2752,36 @@ public void actionPerformed(ActionEvent a)
 {
 	if(a.getSource()==b1)
 	{
-		if(qa==0)
+		if((pla>0)||(pla<6))
 		{
-			if(qn<50)
+			if(qa==0)
 			{
-				Stu.next();
-				if(ne==1)
+				if(qn<50)
 				{
-					Stu.nextsub();
-				}
-				else if(ne==0)
-				{
-					qa++;
-					Stu.nextsub();
+					Stu.next();
+					if(ne==1)
+					{
+						Stu.nextsub();
+					}
+					else if(ne==0)
+					{
+						qa++;
+						Stu.nextsub();
+					}
 				}
 			}
+			c6.setSelected(false);
+			c7.setSelected(false);
+			c8.setSelected(false);
+			c9.setSelected(false);
+			c10.setSelected(false);
+			pla=0;
 		}
-		c6.setSelected(false);
-		c7.setSelected(false);
-		c8.setSelected(false);
-		c9.setSelected(false);
-		c10.setSelected(false);
+		else
+		{
+			JOptionPane.showMessageDialog(this,"Please Select An Answer For Submit !","Warning",JOptionPane.WARNING_MESSAGE);
+		}
+		
 	}
 	else if(a.getSource()==b2)
 	{
@@ -2918,10 +2935,16 @@ public void actionPerformed(ActionEvent a)
 	{
 		if(sesr>1)
 		{
+			if(sesr==sesmax)
+			{
+				b18.setEnabled(true);
+				b18.setVisible(true);
+			}
 			sesr=sesr-1;
 			if(sesr==1)
 			{
 				b8.setEnabled(false);
+				b8.setVisible(false);
 			}
 			Stu.readdb();
 			if(sc==0)
@@ -3059,7 +3082,8 @@ public void actionPerformed(ActionEvent a)
 			sesr=sesr+1;
 			if(sesr==sesmax)
 			{
-				b8.setEnabled(false);
+				b18.setEnabled(false);
+				b18.setVisible(false);
 			}
 			Stu.readdb();
 			if(sc==0)
@@ -3068,13 +3092,18 @@ public void actionPerformed(ActionEvent a)
 			}
 			else if(sc==1)
 			{
+				n++;
 				Stu.stload();
+				b8.setVisible(true);
+				b8.setEnabled(true);
 			}
 			Stu.streset();
 		}
 	}
 	else if(a.getSource()==b19)
 	{
+		qn=1;
+		n=1;
 		sesr=1;
 		Stu.readdb();
 		if(sc==0)
@@ -3084,6 +3113,7 @@ public void actionPerformed(ActionEvent a)
 		else if(sc==1)
 		{
 			Stu.stload();
+			ressheet(f8);
 		}
 		Stu.streset();
 		Stu.smax();

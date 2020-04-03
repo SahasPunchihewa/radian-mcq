@@ -332,148 +332,101 @@ public static void readdb()
 }
 public static void nextsub()
 {
-	if((pla>0)&&(pla<6))
+	if(pla==1)
 	{
-		if(pla==1)
-		{
-			if(1==cans)
-			{
-				
-				pq=1;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-			else
-			{
-				pq=0;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
+		if(1==cans)
+		{	
+			pq=1;
+			
 		}
-		else if(pla==2)
+		else
 		{
-			if(2==cans)
-			{
-				pq=1;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-			else
-			{
-				pq=0;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}	
+			pq=0;
 		}
-		else if(pla==3)
+		try
 		{
-			if(3==cans)
-			{
-				pq=1;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-			else
-			{
-				pq=0;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
 		}
-		else if(pla==4)
+		catch(SQLException ex)
 		{
-			if(4==cans)
-			{
-				pq=1;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-			else
-			{
-				pq=0;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-		}
-		else if(pla==5)
-		{
-			if(5==cans)
-			{
-				pq=1;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-			else
-			{
-				pq=0;
-				try
-				{
-					con.createStatement().execute("insert into player(No,USName,Correct)values('"+((((sesr*1000)+qn)*1000000)+clog)+"','"+sun+"','"+pq+"')");
-				}
-				catch(SQLException ex)
-				{
-					JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
-				}
-			}
+			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
 		}
 	}
-	else
+	else if(pla==2)
 	{
-		JOptionPane.showMessageDialog(null,"Please Select an Answer","ERROR",JOptionPane.WARNING_MESSAGE);
+		if(2==cans)
+		{
+			pq=1;
+		}
+		else
+		{
+			pq=0;
+		}	
+		try
+		{
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+		}
+		catch(SQLException ex)
+		{
+			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+		}
+	}
+	else if(pla==3)
+	{
+		if(3==cans)
+		{
+			pq=1;
+		}
+		else
+		{
+			pq=0;
+		}
+		try
+		{
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+		}
+		catch(SQLException ex)
+		{
+			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+		}
+	}
+	else if(pla==4)
+	{
+		if(4==cans)
+		{
+			pq=1;
+		}
+		else
+		{
+			pq=0;
+		}
+		try
+		{
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+		}
+		catch(SQLException ex)
+		{
+			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+		}
+	}
+	else if(pla==5)
+	{
+		if(5==cans)
+		{
+			pq=1;
+		}
+		else
+		{
+			pq=0;
+		}
+		try
+		{
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+		}
+		catch(SQLException ex)
+		{
+			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	qn=qn+1;
 	Stu.readdb();
@@ -595,11 +548,20 @@ public static void chal()
 }
 public static void res()
 {
+	if(sesr==2)
+	{
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("Sessr "+sesr);
+		System.out.println("n "+n);
+		System.out.println("clog "+clog);
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+	}
 	try
 	{
-		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player where No='"+((((sesr*1000)+n)*1000000)+clog)+"'");
+		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player where No='"+((((sesr*100)+n)*1000000)+clog)+"'");
 		if(r.next())
 		{
+			
 			ans=r.getInt("Correct");
 			if(ans==1)
 			{
@@ -713,7 +675,10 @@ public static void srecent()
 }
 public static void stload()
 {	
-	n=1;
+	l12.setText("N/A");
+	l35.setText("N/A");
+	l33.setText("N/A");
+	l34.setText("N/A");
 	nc=0;
 	nw=0;
 	Stu.res();
@@ -723,7 +688,7 @@ public static void stload()
 	l35.setText("Your Rank is  "+rank);
 	l33.setText("Highest Marks is  "+max+" by "+stma);
 	l34.setText("Lowest Marks is  "+min+" by "+stmi);
-	Frames.ressheet(f8);
+	
 }
 public static void streset()
 {
@@ -745,7 +710,7 @@ public static void smax()
 		if(r.next())
 		{
 			sesmax=r.getInt(1);
-			sesmax=sesmax/1000000000;
+			System.out.println(sesmax);
 		}
 	}
 	catch(SQLException ex)

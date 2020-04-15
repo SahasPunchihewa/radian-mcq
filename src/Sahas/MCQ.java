@@ -26,7 +26,7 @@ static JMenuItem jmi1,jmi2,jmi3,jmi4,jmi5;
 static JFileChooser fc1;
 static File fi1,fil;;
 static int qn=1,answ=0,an=1,rtno=0,pla=0,pq=9,stno,ac=1,ne=0,reqn=0,log=1,countr=0,sign=0,srno=0,srtno=1,clog=0,n=1,rmin=0,rmax=0,nw=0,ans=0,nc=0,x,y,lb=1,max=0,maxn=0,min=0,minn=0,rank=0,qa=0,ses=1,sesdb=0,nol=0,edi=0,sesr=0,res,nimg=0,sc=0,stna=0,stni=0,jop,cans,sean,edan;
-static int dno,dno2,dr1,dr2,sr=0,seno=0,ik,ono,sesmax=0;
+static int dno,dno2,dr1,dr2,sr=0,seno=0,ik,ono,sesmax=0,statcheck=0;
 static String a1,a2,a3,a4,a5,un,pw,sun,spw,path1="",stma,stmi,ip,name="null",name2;
 static Connection con;
 static GraphicsEnvironment ge;
@@ -4544,16 +4544,7 @@ public void actionPerformed(ActionEvent a)
 	}
 	else if(a.getSource()==jmi3)
 	{
-		n=1;
-		nc=0;
-		nw=0;
-		Stu.res();
-		Stu.chal();
-		Stu.leader();
-		l12.setText(nc+"  of  "+(nc+nw)+"  Are Correct");
-		l35.setText("Your Rank is  "+rank);
-		l33.setText("Highest Marks is  "+max);
-		l34.setText("Lowest Marks is  "+min);
+		Stu.stload();
 		Frames.ressheet(f8);
 	}
 	else if(a.getSource()==jmi4)

@@ -345,7 +345,7 @@ public static void nextsub()
 		}
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
@@ -364,7 +364,7 @@ public static void nextsub()
 		}	
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
@@ -383,7 +383,7 @@ public static void nextsub()
 		}
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
@@ -402,7 +402,7 @@ public static void nextsub()
 		}
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
@@ -421,7 +421,7 @@ public static void nextsub()
 		}
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sesr+"','"+sun+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
@@ -546,6 +546,22 @@ public static void chal()
 		}
 	}
 }
+public static void nextcheck()
+{
+	statcheck=0;
+	try
+	{
+		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player where No='"+(((((sesr+1)*100)+n)*1000000)+clog)+"'");
+		if(r.next())
+		{
+			statcheck=1;
+		}
+	}
+	catch(SQLException ex)
+	{
+		JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+	}
+}
 public static void res()
 {
 	if(sesr==2)
@@ -592,6 +608,7 @@ public static void srecent()
 	u18.setVisible(false);
 	u19.setVisible(false);
 	u20.setVisible(false);
+	l8.setVisible(true);
 	for(int j=0;j<10;j++)
 	{
 		namet[j]="null";
@@ -624,6 +641,7 @@ public static void srecent()
 			{
 				u11.setText(namet[l]);
 				u11.setVisible(true);
+				l8.setVisible(false);
 			}
 			else if(l==1)
 			{
@@ -684,6 +702,12 @@ public static void stload()
 	Stu.res();
 	Stu.chal();
 	Stu.leader();
+	Stu.nextcheck();
+	if(statcheck==0)
+	{
+		b18.setEnabled(false);
+		b18.setVisible(false);
+	}
 	l12.setText(nc+"  of  "+(nc+nw)+"  Are Correct");
 	l35.setText("Your Rank is  "+rank);
 	l33.setText("Highest Marks is  "+max+" by "+stma);

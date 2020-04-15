@@ -141,7 +141,7 @@ public static void qadd()
 			{
 				System.out.println(((ses*100000)+an));
 				con.createStatement().execute("insert into questions(No,Name,Sess,MCQ,One,Two,Three,Four,Five,RNo,RsNo)values('"+((ses*100000)+an)+"','"+name2+"','"+ses+"','"+t2.getText()+"','"+t3.getText()+"','"+t4.getText()+"','"+t5.getText()+"','"+t6.getText()+"','"+t7.getText()+"','"+((ses*10000)+an)+"','"+((ses*10000)+an)+"')");
-				l29.setText(an+". ");
+				l29.setText((an+1)+". ");
 			}
 			catch(SQLException ex)
 			{
@@ -161,7 +161,7 @@ public static void qadd()
 					 sta.setBinaryStream(1,fist);
 					 sta.execute();
 					 path1="";
-					 l29.setText(an+". ");
+					 l29.setText((an+1)+". ");
 				}
 				catch(SQLException ex)
 				{
@@ -214,7 +214,7 @@ public static void qadd()
 				t5.setText(r.getString("Three"));
 				t6.setText(r.getString("Four"));
 				t7.setText(r.getString("Five"));
-				l29.setText(seno+". ");
+				l29.setText((seno+1)+". ");
 			}
 		}
 		catch(SQLException ex)
@@ -420,14 +420,15 @@ public static void qadd()
 	}
 	public static void loadses()
 	{
+		Teach.maxqn();
 		try
 		{
 			ResultSet r=con.createStatement().executeQuery("SELECT * FROM questions where No='"+((ses*100000)+1)+"'");
 			if(r.next())
 			{
 				edi=1;
-				seno=1;
-				sequ();
+				seno=maxqno;
+				Teach.sequ();
 				Frames.fwrite(f2);
 				nol=2;
 				edi=0;
@@ -490,6 +491,36 @@ public static void qadd()
 			}
 			
 		}
+	}
+	public static void maxqn()
+	{
+		try
+		{
+			ResultSet r=con.createStatement().executeQuery("SELECT MAX(No) FROM questions WHERE No>'"+(100000*ses)+"' AND No<'"+((ses+1)*100000)+"'");
+			if(r.next())
+			{
+				maxqno=r.getInt(1);
+				maxqno=maxqno-(ses*100000);
+			}
+		}
+		catch(SQLException ex)
+		{
+			JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	public static void textclear()
+	{
+		t2.setText("");
+		t3.setText("");
+		t4.setText("");
+		t5.setText("");
+		t6.setText("");
+		t7.setText("");
+		c1.setSelected(false);
+		c2.setSelected(false);
+		c3.setSelected(false);
+		c4.setSelected(false);
+		c5.setSelected(false);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

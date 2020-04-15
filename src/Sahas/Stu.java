@@ -691,6 +691,22 @@ public static void srecent()
 		}
 	}
 }
+public static void tnameload()
+{
+	try
+	{
+		ResultSet r=con.createStatement().executeQuery("SELECT DISTINCT Name FROM questions WHERE Sess='"+sesr+"'");
+		if(r.next())
+		{
+			tname=r.getString("Name");
+			
+		}
+	}
+	catch(SQLException ex)
+	{
+		JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+	}
+}
 public static void stload()
 {	
 	l12.setText("N/A");
@@ -703,11 +719,13 @@ public static void stload()
 	Stu.chal();
 	Stu.leader();
 	Stu.nextcheck();
+	Stu.tnameload();
 	if(statcheck==0)
 	{
 		b18.setEnabled(false);
 		b18.setVisible(false);
 	}
+	l30.setText(tname);
 	l12.setText(nc+"  of  "+(nc+nw)+"  Are Correct");
 	l35.setText("Your Rank is  "+rank);
 	l33.setText("Highest Marks is  "+max+" by "+stma);
@@ -740,6 +758,45 @@ public static void smax()
 	catch(SQLException ex)
 	{
 		JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+	}
+}
+public static void tcheck()
+{
+	System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr = = = ="+sun);
+	acheck=0;
+	try
+	{
+		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player WHERE USName='"+sun+"'");
+		if(r.next())
+		{
+			acheck=1;
+		}
+	}
+	catch(SQLException ex)
+	{
+		JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+	}
+}
+public static void ubuttons()
+{
+	Stu.tcheck();
+	if(acheck==0)
+	{
+		Stu.rclear();
+		Stu.ran();
+		Stu.minmax();
+		for(int k=0;k<5;k++)
+		{
+			Stu.dcheck();
+		}
+		srno=rmin;
+		Stu.sloop();
+		Stu.readdb();
+		Frames.fread(f1);
+	}
+	else
+	{
+		JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Test! Try Annother","Warning",JOptionPane.WARNING_MESSAGE);
 	}
 }
 public static void main(String[] args) 

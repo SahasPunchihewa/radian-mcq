@@ -26,8 +26,8 @@ static JMenuItem jmi1,jmi2,jmi3,jmi4,jmi5;
 static JFileChooser fc1;
 static File fi1,fil;;
 static int qn=1,answ=0,an=1,rtno=0,pla=0,pq=9,stno,ac=1,ne=0,reqn=0,log=1,countr=0,sign=0,srno=0,srtno=1,clog=0,n=1,rmin=0,rmax=0,nw=0,ans=0,nc=0,x,y,lb=1,max=0,maxn=0,min=0,minn=0,rank=0,qa=0,ses=1,sesdb=0,nol=0,edi=0,sesr=0,res,nimg=0,sc=0,stna=0,stni=0,jop,cans,sean,edan;
-static int dno,dno2,dr1,dr2,sr=0,seno=0,ik,ono,sesmax=0,statcheck=0;
-static String a1,a2,a3,a4,a5,un,pw,sun,spw,path1="",stma,stmi,ip,name="null",name2;
+static int dno,dno2,dr1,dr2,sr=0,seno=0,ik,ono,sesmax=0,statcheck=0,acheck=0;
+static String a1,a2,a3,a4,a5,un,pw,sun,spw,path1="",stma,stmi,ip,name="null",name2,tname="";
 static Connection con;
 static GraphicsEnvironment ge;
 static GraphicsDevice Screen;
@@ -4262,152 +4262,52 @@ public void actionPerformed(ActionEvent a)
 	else if(a.getSource()==u11)
 	{
 		sesr=1;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u12)
 	{
 		sesr=2;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u13)
 	{
 		sesr=3;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u14)
 	{
 		sesr=4;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u15)
 	{
 		sesr=5;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u16)
 	{
 		sesr=6;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u17)
 	{
 		sesr=7;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u18)
 	{
 		sesr=8;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u19)
 	{
 		sesr=9;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==u20)
 	{
 		sesr=10;
-		Stu.rclear();
-		Stu.ran();
-		Stu.minmax();
-		for(int k=0;k<5;k++)
-		{
-			Stu.dcheck();
-		}
-		srno=rmin;
-		Stu.sloop();
-		Stu.readdb();
-		Frames.fread(f1);
+		Stu.ubuttons();
 	}
 	else if(a.getSource()==x1)
 	{

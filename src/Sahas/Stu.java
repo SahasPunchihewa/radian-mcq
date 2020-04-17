@@ -766,7 +766,7 @@ public static void tcheck()
 	acheck=0;
 	try
 	{
-		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player WHERE USName='"+sun+"'");
+		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player WHERE USName='"+sun+"' AND Session='"+sesr+"'");
 		if(r.next())
 		{
 			acheck=1;

@@ -245,6 +245,22 @@ public static void sortr()
 		JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
 	}
 }
+public static void statcheck()
+{
+	sc=0;
+	try
+	{
+		ResultSet r=con.createStatement().executeQuery("SELECT * FROM questions where RsNo='"+qn+"'");
+		if(r.next())
+		{
+			sc=1;
+		}
+	}
+	catch(SQLException ex)
+	{
+	JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+	}
+}
 public static void readdb()
 {
 	sc=0;
@@ -762,7 +778,6 @@ public static void smax()
 }
 public static void tcheck()
 {
-	System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr = = = ="+sun);
 	acheck=0;
 	try
 	{

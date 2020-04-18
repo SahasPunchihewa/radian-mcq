@@ -3102,10 +3102,10 @@ public void actionPerformed(ActionEvent a)
 	}
 	else if(a.getSource()==b19)
 	{
-		qn=1;
+		qn=100001;
 		n=1;
 		sesr=1;
-		Stu.readdb();
+		Stu.statcheck();
 		if(sc==0)
 		{
 			JOptionPane.showMessageDialog(null,"Please Complete a Test","Warrning",JOptionPane.WARNING_MESSAGE);

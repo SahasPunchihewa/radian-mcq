@@ -459,7 +459,7 @@ public static void leader()
 	stni=0;
 	try
 	{
-		ResultSet r=con.createStatement().executeQuery("SELECT MAX(Corr) FROM `stat` WHERE(Corr)<'"+((sesr+1)*100000)+"'");
+		ResultSet r=con.createStatement().executeQuery("SELECT MAX(Corr) FROM `stat` WHERE (Corr)<'"+((sesr+1)*100000)+"' AND (Corr)>'"+((sesr)*100000)+"'");
 		if(r.next())
 		{
 			max=((r.getInt(1))-(sesr*100000));
@@ -472,12 +472,11 @@ public static void leader()
 	}
 	try
 	{
-		ResultSet r=con.createStatement().executeQuery("SELECT MIN(Corr) FROM `stat` WHERE(Corr)<'"+((sesr+1)*100000)+"'");
+		ResultSet r=con.createStatement().executeQuery("SELECT MIN(Corr) FROM `stat` WHERE (Corr)<'"+((sesr+1)*100000)+"' AND (Corr)>'"+((sesr)*100000)+"'");
 		if(r.next())
 		{
 			min=((r.getInt(1))-(sesr*100000));
 			minn=r.getInt(1);
-			System.out.println("efhgjwheg "+min+" djfsdjfishdfh "+minn);
 		}
 	}
 	catch(SQLException ex)

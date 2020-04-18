@@ -477,6 +477,7 @@ public static void leader()
 		{
 			min=((r.getInt(1))-(sesr*100000));
 			minn=r.getInt(1);
+			System.out.println("efhgjwheg "+min+" djfsdjfishdfh "+minn);
 		}
 	}
 	catch(SQLException ex)
@@ -580,14 +581,6 @@ public static void nextcheck()
 }
 public static void res()
 {
-	if(sesr==2)
-	{
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("Sessr "+sesr);
-		System.out.println("n "+n);
-		System.out.println("clog "+clog);
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-	}
 	try
 	{
 		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player where No='"+((((sesr*100)+n)*1000000)+clog)+"'");
@@ -734,6 +727,7 @@ public static void stload()
 	Stu.res();
 	Stu.chal();
 	Stu.leader();
+	n=1;
 	Stu.nextcheck();
 	Stu.tnameload();
 	if(statcheck==0)

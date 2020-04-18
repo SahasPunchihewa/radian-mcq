@@ -2933,6 +2933,7 @@ public void actionPerformed(ActionEvent a)
 	}
 	else if(a.getSource()==b8)
 	{
+		qn=(sesr*100000)+1;
 		if(sesr>1)
 		{
 			if(sesr==sesmax)
@@ -2946,7 +2947,7 @@ public void actionPerformed(ActionEvent a)
 				b8.setEnabled(false);
 				b8.setVisible(false);
 			}
-			Stu.readdb();
+			Stu.statcheck();
 			if(sc==0)
 			{
 				JOptionPane.showMessageDialog(null,"Please Complete a Test","Warrning",JOptionPane.WARNING_MESSAGE);
@@ -3077,6 +3078,7 @@ public void actionPerformed(ActionEvent a)
 	}
 	else if(a.getSource()==b18)
 	{
+		qn=(sesr*100000)+1;
 		if(sesr<sesmax)
 		{
 			sesr=sesr+1;
@@ -3085,7 +3087,7 @@ public void actionPerformed(ActionEvent a)
 				b18.setEnabled(false);
 				b18.setVisible(false);
 			}
-			Stu.readdb();
+			Stu.statcheck();
 			if(sc==0)
 			{
 				JOptionPane.showMessageDialog(null,"Please Complete a Test","Warrning",JOptionPane.WARNING_MESSAGE);

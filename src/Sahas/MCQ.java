@@ -2509,6 +2509,7 @@ public static void ressheet(JFrame f8)
 	f8.setTitle("Your Status");
 	f8.getContentPane().setLayout(null);
 	f8.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	f8.getContentPane().add(jmb2);
 	f8.getContentPane().add(l12);
 	f8.getContentPane().add(l20);
 	f8.getContentPane().add(l30);
@@ -3035,6 +3036,11 @@ public void actionPerformed(ActionEvent a)
 			{
 				JOptionPane.showMessageDialog(this,"Incorrect Username Password Combination","Error",JOptionPane.ERROR_MESSAGE);
 			}
+			else
+			{
+				t8.setText("");
+				p2.setText("");
+			}
 		}
 		clog=log;
 		log=1;
@@ -3114,6 +3120,12 @@ public void actionPerformed(ActionEvent a)
 		}
 		else if(sc==1)
 		{
+			Stu.nextcheck();
+			if(statcheck==1)
+			{
+				b18.setEnabled(true);
+				b18.setVisible(true);
+			}
 			Stu.stload();
 			ressheet(f8);
 		}

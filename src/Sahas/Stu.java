@@ -761,7 +761,6 @@ public static void smax()
 		if(r.next())
 		{
 			sesmax=r.getInt(1);
-			System.out.println(sesmax);
 		}
 	}
 	catch(SQLException ex)

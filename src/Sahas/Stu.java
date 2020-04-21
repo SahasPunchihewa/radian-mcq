@@ -302,47 +302,45 @@ public static void readdb()
 		{
 			JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
 		}
+		try
 		{
-			try
-			{
-	    	fil=new File("C:\\Users\\Public\\Pictures\\mcqimg.jpg");
-	    	fos=new FileOutputStream(fil);
-	    	ResultSet r=con.createStatement().executeQuery("SELECT * FROM questions where No='"+reqn+"'");
-	    	if(r.next())
-	    	{
-	    		blo=r.getBlob("IMG");
-	    		b=blo.getBytes(1,(int)blo.length());
-	    		fos.write(b);
-	    	}
-	    	try
-	    	{
-	    		nimg=0;
-	    		buf1=ImageIO.read(new File("C:\\Users\\Public\\Pictures\\mcqimg.jpg"));
-	    		rimg=buf1.getScaledInstance(140,140,Image.SCALE_SMOOTH);
-	    		l43.setIcon(new ImageIcon(rimg));
-	    		b24.setRolloverIcon(new ImageIcon(MCQ.class.getResource("/IMG/Trance.png")));
-	    	}
-	    	catch(NullPointerException e1)
-	    	{
-	    		JOptionPane.showMessageDialog(null,"Error");
-	    	}
-	    	l2.setBounds(35,46,540,140);
-			}
-			catch(SQLException e)
-			{
+	   	fil=new File("C:\\Users\\Public\\Pictures\\mcqimg.jpg");
+	   	fos=new FileOutputStream(fil);
+	   	ResultSet r=con.createStatement().executeQuery("SELECT * FROM questions where No='"+reqn+"'");
+	   	if(r.next())
+	   	{
+	   		blo=r.getBlob("IMG");
+	   		b=blo.getBytes(1,(int)blo.length());
+	   		fos.write(b);
+	   	}
+	   	try
+    	{
+	   		nimg=0;
+	   		buf1=ImageIO.read(new File("C:\\Users\\Public\\Pictures\\mcqimg.jpg"));
+	   		rimg=buf1.getScaledInstance(140,140,Image.SCALE_SMOOTH);
+	   		l43.setIcon(new ImageIcon(rimg));
+	   		b24.setRolloverIcon(new ImageIcon(MCQ.class.getResource("/IMG/Trance.png")));
+	   	}
+	   	catch(NullPointerException e1)
+	   	{
+	   		JOptionPane.showMessageDialog(null,"Error");
+	   	}
+	   	l2.setBounds(35,46,540,140);
+		}
+		catch(SQLException e)
+		{
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			}
-			catch(IOException ex)
-			{
-				JOptionPane.showMessageDialog(null,"IO");
-			}
-			catch(NullPointerException ex1)
-			{
-				nimg=1;
-				l43.setIcon(null);
-				b24.setRolloverIcon(null);
-				l2.setBounds(35,46,712,140);
-			}
+		}
+		catch(IOException ex)
+		{
+			JOptionPane.showMessageDialog(null,"IO");
+		}
+		catch(NullPointerException ex1)
+		{
+			nimg=1;
+			l43.setIcon(null);
+			b24.setRolloverIcon(null);
+			l2.setBounds(35,46,712,140);
 		}
 	}
 }
@@ -361,11 +359,18 @@ public static void nextsub()
 		}
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Answer,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pla+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
-			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+			try
+			{
+				con.createStatement().execute("UPDATE player SET Answer='"+pla+"',Correct='"+pq+"' WHERE No='"+((((sesr*100)+qn)*1000000)+clog)+"'");
+			}
+			catch(SQLException ex2)
+			{
+				JOptionPane.showMessageDialog(null,ex2.getMessage(),"Warning",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 	}
 	else if(pla==2)
@@ -380,11 +385,18 @@ public static void nextsub()
 		}	
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Answer,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pla+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
-			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+			try
+			{
+				con.createStatement().execute("UPDATE player SET Answer='"+pla+"',Correct='"+pq+"' WHERE No='"+((((sesr*100)+qn)*1000000)+clog)+"'");
+			}
+			catch(SQLException ex2)
+			{
+				JOptionPane.showMessageDialog(null,ex2.getMessage(),"Warning",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 	}
 	else if(pla==3)
@@ -399,11 +411,18 @@ public static void nextsub()
 		}
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Answer,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pla+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
-			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+			try
+			{
+				con.createStatement().execute("UPDATE player SET Answer='"+pla+"',Correct='"+pq+"' WHERE No='"+((((sesr*100)+qn)*1000000)+clog)+"'");
+			}
+			catch(SQLException ex2)
+			{
+				JOptionPane.showMessageDialog(null,ex2.getMessage(),"Warning",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 	}
 	else if(pla==4)
@@ -418,11 +437,18 @@ public static void nextsub()
 		}
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Answer,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pla+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
-			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+			try
+			{
+				con.createStatement().execute("UPDATE player SET Answer='"+pla+"',Correct='"+pq+"' WHERE No='"+((((sesr*100)+qn)*1000000)+clog)+"'");
+			}
+			catch(SQLException ex2)
+			{
+				JOptionPane.showMessageDialog(null,ex2.getMessage(),"Warning",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 	}
 	else if(pla==5)
@@ -437,21 +463,59 @@ public static void nextsub()
 		}
 		try
 		{
-			con.createStatement().execute("insert into player(No,USName,Session,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pq+"')");
+			con.createStatement().execute("insert into player(No,USName,Session,Answer,Correct)values('"+((((sesr*100)+qn)*1000000)+clog)+"','"+sun+"','"+sesr+"','"+pla+"','"+pq+"')");
 		}
 		catch(SQLException ex)
 		{
-			JOptionPane.showMessageDialog(null,"You Have Alredy Answerd This Question","Warning",JOptionPane.WARNING_MESSAGE);
+			try
+			{
+				con.createStatement().execute("UPDATE player SET Answer='"+pla+"',Correct='"+pq+"' WHERE No='"+((((sesr*100)+qn)*1000000)+clog)+"'");
+			}
+			catch(SQLException ex2)
+			{
+				JOptionPane.showMessageDialog(null,ex2.getMessage(),"Warning",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 	}
 	qn=qn+1;
 	Stu.readdb();
-	c6.setSelected(false);
-	c7.setSelected(false);
-	c8.setSelected(false);
-	c9.setSelected(false);
-	c10.setSelected(false);
+	Stu.checkadder();
 	ne=0;
+}
+public static void checkadder()
+{
+	try
+	{
+		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player where No='"+((((sesr*100)+qn)*1000000)+clog)+"'");
+		if(r.next())
+		{
+			cans2=r.getInt("Answer");
+			if(cans2==1)
+			{
+				c6.setSelected(true);
+			}
+			else if(cans2==2)
+			{
+				c7.setSelected(true);
+			}
+			else if(cans2==3)
+			{
+				c8.setSelected(true);
+			}
+			else if(cans2==4)
+			{
+				c9.setSelected(true);
+			}
+			else if(cans2==5)
+			{
+				c10.setSelected(true);
+			}
+		}
+	}
+	catch(SQLException ex)
+	{
+		JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+	}
 }
 public static void leader()
 {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2020 at 05:50 PM
+-- Generation Time: Apr 22, 2020 at 07:20 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -51,6 +51,7 @@ CREATE TABLE `player` (
   `No` int(11) NOT NULL,
   `USName` text NOT NULL,
   `Session` int(11) NOT NULL,
+  `Answer` int(11) NOT NULL,
   `Correct` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

@@ -26,7 +26,7 @@ static JMenuItem jmi1,jmi2,jmi3,jmi4,jmi5;
 static JFileChooser fc1;
 static File fi1,fil;;
 static int qn=1,answ=0,an=1,rtno=0,pla=0,pq=9,stno,ac=1,ne=0,reqn=0,log=1,countr=0,sign=0,srno=0,srtno=1,clog=0,n=1,rmin=0,rmax=0,nw=0,ans=0,nc=0,x,y,lb=1,max=0,maxn=0,min=0,minn=0,rank=0,qa=0,ses=1,sesdb=0,nol=0,edi=0,sesr=0,res,nimg=0,sc=0,stna=0,stni=0,jop,cans,sean,edan;
-static int dno,dno2,dr1,dr2,sr=0,seno=0,ik,ono,sesmax=0,statcheck=0,acheck=0,maxqno=0,cans2=0;
+static int dno,dno2,dr1,dr2,sr=0,seno=0,ik,ono,sesmax=0,statcheck=0,acheck=0,maxqno=0,cans2=0,nmax=0;
 static String a1,a2,a3,a4,a5,un,pw,sun,spw,path1="",stma,stmi,ip,name="null",name2,tname="";
 static Connection con;
 static GraphicsEnvironment ge;
@@ -2760,20 +2760,16 @@ public void actionPerformed(ActionEvent a)
 			c8.setSelected(false);
 			c9.setSelected(false);
 			c10.setSelected(false);
-			if(qa==0)
+			b12.setEnabled(true);
+			b12.setVisible(true);
+			if(qn<50)
 			{
-				if(qn<50)
+				Stu.nextsub();
+				Stu.next();
+				if(ne==0)
 				{
-					Stu.next();
-					if(ne==1)
-					{
-						Stu.nextsub();
-					}
-					else if(ne==0)
-					{
-						qa++;
-						Stu.nextsub();
-					}
+					b11.setEnabled(false);
+					b11.setVisible(false);
 				}
 			}
 			pla=0;
@@ -3003,7 +2999,14 @@ public void actionPerformed(ActionEvent a)
 			qn=qn+1;
 			Stu.readdb();
 			Stu.checkadder();
+			b12.setEnabled(true);
+			b12.setVisible(true);
 			ne=0;
+			if(qn==nmax)
+			{
+				b11.setEnabled(false);
+				b11.setVisible(false);
+			}
 		}
 	}
 	else if(a.getSource()==b12)
@@ -3018,6 +3021,13 @@ public void actionPerformed(ActionEvent a)
 			qn=qn-1;
 			Stu.readdb();
 			Stu.checkadder();
+			b11.setEnabled(true);
+			b11.setVisible(true);
+		}
+		if(qn==1)
+		{
+			b12.setEnabled(false);
+			b12.setVisible(false);
 		}
 	}
 	else if(a.getSource()==b13)

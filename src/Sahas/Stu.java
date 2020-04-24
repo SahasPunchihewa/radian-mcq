@@ -250,7 +250,7 @@ public static void statcheck()
 	sc=0;
 	try
 	{
-		ResultSet r=con.createStatement().executeQuery("SELECT * FROM questions where RsNo='"+qn+"'");
+		ResultSet r=con.createStatement().executeQuery("SELECT * FROM questions where No='"+qn+"'");
 		if(r.next())
 		{
 			sc=1;
@@ -482,10 +482,13 @@ public static void nextsub()
 					}
 				}
 			}
-			qn=qn+1;
-			Stu.readdb();
-			Stu.checkadder();
-			ne=0;
+			if(qn<50)
+			{
+				qn=qn+1;
+				Stu.readdb();
+				Stu.checkadder();
+				ne=0;
+			}
 		}
 	}
 	catch(SQLException ex)
@@ -653,30 +656,49 @@ public static void nextcheck()
 		JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
 	}
 }
-public static void res()
+public static void qcount()
 {
 	try
 	{
-		ResultSet r=con.createStatement().executeQuery("SELECT * FROM player where No='"+((((sesr*100)+n)*1000000)+clog)+"'");
+		ResultSet r=con.createStatement().executeQuery("SELECT COUNT(No) FROM questions where No>'"+(sesr*100000)+"' AND No<'"+((sesr+1)*100000)+"'");
 		if(r.next())
 		{
-			
-			ans=r.getInt("Correct");
-			if(ans==1)
+			qc=r.getInt(1);
+			if(qc>50)
 			{
-				nc++;
+				qc=50;
 			}
-			else if(ans==0)
-			{
-				nw++;
-			}
-			n++;
-			res();
 		}
 	}
 	catch(SQLException ex)
 	{
 		JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+	}
+}
+public static void res()
+{
+	for(n=1;n<=50;n++)
+	{
+		try
+		{
+			ResultSet r=con.createStatement().executeQuery("SELECT * FROM player where No='"+((((sesr*100)+n)*1000000)+clog)+"'");
+			if(r.next())
+			{
+				ans=r.getInt("Correct");
+				if(ans==1)
+				{
+					nc++;
+				}
+				else if(ans==0)
+				{
+					nw++;
+				}
+			}
+		}
+		catch(SQLException ex)
+		{
+			JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }
 public static void srecent()
@@ -799,6 +821,7 @@ public static void stload()
 	nc=0;
 	nw=0;
 	Stu.res();
+	Stu.qcount();
 	Stu.chal();
 	Stu.leader();
 	n=1;
@@ -810,7 +833,7 @@ public static void stload()
 		b18.setVisible(false);
 	}
 	l30.setText(tname);
-	l12.setText(nc+"  of  "+(nc+nw)+"  Are Correct");
+	l12.setText(nc+"  of  "+qc+"  Are Correct");
 	l35.setText("Your Rank is  "+rank);
 	l33.setText("Highest Marks is  "+max+" by "+stma);
 	l34.setText("Lowest Marks is  "+min+" by "+stmi);

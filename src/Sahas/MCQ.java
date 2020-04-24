@@ -20,13 +20,13 @@ static JLabel lb1,lb2,lb3,lb4,lb5,lb6,lb7,lb8,lb9,lb10,lb11,lb12,lb13,lb14,lb15,
 static JTextArea t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18,t19,t20;
 static JPasswordField p1,p2,p3,p4;;
 static JCheckBox c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20;
-static JMenuBar jmb1,jmb2;
-static JMenu jm1,jm2;
-static JMenuItem jmi1,jmi2,jmi3,jmi4,jmi5;
+static JMenuBar jmb1,jmb2,jmb3;
+static JMenu jm1,jm2,jm3;
+static JMenuItem jmi1,jmi2,jmi3,jmi4,jmi5,jmi6,jmi7;
 static JFileChooser fc1;
 static File fi1,fil;;
 static int qn=1,answ=0,an=1,rtno=0,pla=0,pq=9,stno,ac=1,ne=0,reqn=0,log=1,countr=0,sign=0,srno=0,srtno=1,clog=0,n=1,rmin=0,rmax=0,nw=0,ans=0,nc=0,x,y,lb=1,max=0,maxn=0,min=0,minn=0,rank=0,qa=0,ses=1,sesdb=0,nol=0,edi=0,sesr=0,res,nimg=0,sc=0,stna=0,stni=0,jop,cans,sean,edan;
-static int dno,dno2,dr1,dr2,sr=0,seno=0,ik,ono,sesmax=0,statcheck=0,acheck=0,maxqno=0,cans2=0,nmax=0;
+static int dno,dno2,dr1,dr2,sr=0,seno=0,ik,ono,sesmax=0,statcheck=0,acheck=0,maxqno=0,cans2=0,nmax=0,qc=0;
 static String a1,a2,a3,a4,a5,un,pw,sun,spw,path1="",stma,stmi,ip,name="null",name2,tname="";
 static Connection con;
 static GraphicsEnvironment ge;
@@ -1735,6 +1735,10 @@ public MCQ()
 	jmb2.setBorderPainted(false);
 	jmb2.setBorder(null);
 	jmb2.setOpaque(false);
+	jmb3=new JMenuBar();
+	jmb3.setBorderPainted(false);
+	jmb3.setBorder(null);
+	jmb3.setOpaque(false);
 	jm1=new JMenu("");
 	jm1.setDoubleBuffered(true);
 	jm1.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -1747,6 +1751,11 @@ public MCQ()
 	jm2.setIcon(new ImageIcon(MCQ.class.getResource("/Button/Menu.png")));
 	jm2.setContentAreaFilled(false);
 	jm2.setBorder(null);
+	jm3=new JMenu("");
+	jm3.setHorizontalAlignment(SwingConstants.CENTER);
+	jm3.setIcon(new ImageIcon(MCQ.class.getResource("/Button/Menu.png")));
+	jm3.setContentAreaFilled(false);
+	jm3.setBorder(null);
 	jmi3=new JMenuItem("Your Status");
 	jmi3.setBorder(null);
 	jmi3.setContentAreaFilled(false);
@@ -1756,6 +1765,7 @@ public MCQ()
 	jmi5.setContentAreaFilled(false);
 	jmb1.add(jm1);
 	jmb2.add(jm2);
+	jmb3.add(jm3);
 	jm1.add(jmi3);
 	jmi2=new JMenuItem("About");
 	jmi2.setBorder(null);
@@ -1773,11 +1783,21 @@ public MCQ()
 	jmi4=new JMenuItem("Log out");
 	jmi4.setIcon(new ImageIcon(MCQ.class.getResource("/ICO/Logout.png")));
 	jmi4.setContentAreaFilled(false);
+	jmi6=new JMenuItem("Log out");
+	jmi6.setIcon(new ImageIcon(MCQ.class.getResource("/ICO/Logout.png")));
+	jmi6.setContentAreaFilled(false);
+	jmi7=new JMenuItem("About");
+	jmi7.setBorder(null);
+	jmi7.setContentAreaFilled(false);
+	jmi7.setIcon(new ImageIcon(MCQ.class.getResource("/ICO/AboutS.png")));
 	jm2.add(jmi4);
+	jm3.add(jmi7);
+	jm3.add(jmi6);
 	fc1=new JFileChooser();
 	fi1=new File("");
 	jmb1.setBounds(0,0,47,35);
 	jmb2.setBounds(0,0,47,35);
+	jmb3.setBounds(0,0,47,35);
 	l1.setBounds(379,372,100,25);
 	l2.setBounds(35,53,540,140);
 	l3.setBounds(74,200,72,30);
@@ -2222,6 +2242,8 @@ public MCQ()
 	jmi3.addActionListener(this);
 	jmi4.addActionListener(this);
 	jmi5.addActionListener(this);
+	jmi6.addActionListener(this);
+	jmi7.addActionListener(this);
 	f10.dispose();
 	fselect(f3);
 }
@@ -2509,7 +2531,7 @@ public static void ressheet(JFrame f8)
 	f8.setTitle("Your Status");
 	f8.getContentPane().setLayout(null);
 	f8.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	f8.getContentPane().add(jmb2);
+	f8.getContentPane().add(jmb3);
 	f8.getContentPane().add(l12);
 	f8.getContentPane().add(l20);
 	f8.getContentPane().add(l30);
@@ -2762,7 +2784,7 @@ public void actionPerformed(ActionEvent a)
 			c10.setSelected(false);
 			b12.setEnabled(true);
 			b12.setVisible(true);
-			if(qn<50)
+			if(qn<=50)
 			{
 				Stu.nextsub();
 				Stu.next();
@@ -4552,6 +4574,28 @@ public void actionPerformed(ActionEvent a)
 		Frames.slog(f5);
 	}
 	else if(a.getSource()==jmi5)
+	{
+		Frames.about(f9);
+	}
+	else if(a.getSource()==jmi6)
+	{
+		f1.dispose();
+		f7.dispose();
+		f8.dispose();
+		t8.setText("");
+		p2.setText("");
+		l2.setText("N/A");
+		c6.setText("N/A");
+		c7.setText("N/A");
+		c8.setText("N/A");
+		c9.setText("N/A");
+		c10.setText("N/A");
+		l43.setIcon(null);
+		b24.setRolloverIcon(null);
+		qn=1;
+		Frames.slog(f5);
+	}
+	else if(a.getSource()==jmi7)
 	{
 		Frames.about(f9);
 	}
